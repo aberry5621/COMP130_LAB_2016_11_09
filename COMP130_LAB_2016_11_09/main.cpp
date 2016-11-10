@@ -27,13 +27,21 @@ int main() {
 	while (!ss.eof()) {
 		ss >> word;
 
+		cout << "----------------------------"<< endl;
 		cout << "operating on word: " << word << endl;
 
 		// remove all but alphas
-		int first = word.at(0);
+		char first = static_cast<int>(word.at(0));
 
-		if ((first > 47) && (first < 53)) {
+		if ((first > 47) && (first < 58)) {
 			cout << "found a number at word: " << word << endl;
+			word = "";
+		}
+
+		// do not include single letters: "I", "a", etc
+		if (word.length() == 1)
+		{
+			cout << "single alpha, whack it: " << word << endl;
 			word = "";
 		}
 
@@ -61,12 +69,13 @@ int main() {
 			cout << "removed period from word: " << word << endl;
 		}
 
-		cout << "post-op result word: " << word << endl;
 
+
+		cout << "post-op result word: " << word << endl;
 
 	}
 
-	// do not include single letters: "I", "a", etc
+	
 	// convert all letters to lower case
 	
 	// sort and display array and word occurrence
